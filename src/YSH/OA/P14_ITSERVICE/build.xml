@@ -1,0 +1,10 @@
+<project name="ITSERVICE" default="init" basedir=".">
+    
+    <target name="init">
+       
+       <copy encoding="UTF-8" includeemptydirs="false" todir="Y:\babylon\ysphr\YSH\OA\P14_ITSERVICE">
+           <fileset dir="D:\EmakerProject\ITSERVICE\src\YSH\OA\P14_ITSERVICE">
+                      </fileset>
+       </copy>
+    </target>
+</project>
