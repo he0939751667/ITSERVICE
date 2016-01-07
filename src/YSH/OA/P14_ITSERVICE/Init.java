@@ -23,17 +23,20 @@ public class Init {
 	String EDATE = "EDATE";
 	// 查詢table
 	String COMPLETEDATE = "COMPLETEDATE";
+	// 判斷總經理或董事長
+	String CHECK_CHIEF = "CHECK_CHIEF";
 
 	/**
 	 * 本張表單新增介面上有的欄位
 	 * 
 	 * @return DEPT_NAME [0],EMPID [1],APDATE [2],DEDATE [3],LVL [4],DETYPE
-	 *         [5],TYPE [6],EFFECTS [7],DESCRIPT [8],RULEFILE [9],UPLD1
-	 *         [10],UPLD2 [11],UPLD3 [12],UPLD4 [13],UPLD5 [14]
+	 *         [5],TYPE [6],EFFECTS [7],DESCRIPT [8], CHECK_CHIEF[9],RULEFILE
+	 *         [10],UPLD1 [11],UPLD2 [12],UPLD3 [13],UPLD4 [14],UPLD5 [15]
 	 */
 	public String[] field_Init() {
 		String[] Init = { DEPT_NAME, EMPID, APDATE, DEDATE, LVL, DETYPE, TYPE,
-				EFFECTS, DESCRIPT, RULEFILE, UPLD1, UPLD2, UPLD3, UPLD4, UPLD5 };
+				EFFECTS, DESCRIPT, CHECK_CHIEF, RULEFILE, UPLD1, UPLD2, UPLD3,
+				UPLD4, UPLD5 };
 		return Init;
 	}
 
@@ -42,12 +45,12 @@ public class Init {
 	 * 
 	 * @return 
 	 *         PNO,DEPT_NAME,EMPID,APDATE,DEDATE,LVL,DETYPE,TYPE,EFFECTS,DESCRIPT
-	 *         ,RULEFILE,UPLD1,UPLD2,UPLD3,UPLD4,UPLD5
+	 *         ,CHECK_CHIEF ,RULEFILE,UPLD1,UPLD2,UPLD3,UPLD4,UPLD5
 	 */
 	public String[] field() {
 		String[] field = { PNO, DEPT_NAME, EMPID, APDATE, DEDATE, LVL, DETYPE,
-				TYPE, EFFECTS, DESCRIPT, RULEFILE, UPLD1, UPLD2, UPLD3, UPLD4,
-				UPLD5 };
+				TYPE, EFFECTS, DESCRIPT, CHECK_CHIEF, RULEFILE, UPLD1, UPLD2,
+				UPLD3, UPLD4, UPLD5 };
 		return field;
 	}
 
@@ -118,24 +121,25 @@ public class Init {
 				UPLD4, UPLD5, EFFECTS, DESCRIPT };
 		return query_detail;
 	}
-	
+
 	/**
 	 * 下載檔案的欄位
+	 * 
 	 * @return RULEFILE, UPLD1, UPLD2, UPLD3, UPLD4, UPLD5
 	 */
-	public String[] download_field(){
+	public String[] download_field() {
 		String[] download_field = { RULEFILE, UPLD1, UPLD2, UPLD3, UPLD4, UPLD5 };
 		return download_field;
 	}
-	
+
 	/**
 	 * 待處理要更新的欄位
-	 * @return LVL, APDATE, DEDATE,
-				DETYPE, TYPE, EFFECTS, DESCRIPT
+	 * 
+	 * @return LVL, APDATE, DEDATE, DETYPE, TYPE, EFFECTS, DESCRIPT
 	 */
-	public String[] process_update(){
-		String[] process_update = {LVL, APDATE, DEDATE,
-				DETYPE, TYPE, EFFECTS, DESCRIPT};
+	public String[] process_update() {
+		String[] process_update = { LVL, APDATE, DEDATE, DETYPE, TYPE, EFFECTS,
+				DESCRIPT };
 		return process_update;
 	}
 }

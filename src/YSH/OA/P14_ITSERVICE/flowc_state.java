@@ -15,6 +15,7 @@ public class flowc_state extends _hproc {
 		// 肚 value
 		Init init = new Init();
 		talk t = getTalk();
+		String CHECK_CHIEF = getValue("CHECK_CHIEF");
 		String state = getState().trim();
 		String EMPID = getValue("EMPID");
 		setValue("ENAME", getName(EMPID));
@@ -28,13 +29,10 @@ public class flowc_state extends _hproc {
 		download_field(tot_FF, download);
 		if (state.equals("矪瞶")) {
 			setNewView("FLOWPROCESS");
-		} else if (state.equals("场恨")) {
-			String getchief[][] = getchief(EMPID);
-			String getparent_chief[][] = getparent_chief(getchief[0][1]);
-			if (getchief[0][0].equals(getparent_chief[0][0])) {
-				setValue("check", "1");
-			} else {
-				setValue("check", "0");
+			if(CHECK_CHIEF.equals("u35572")){
+				setValue("CHECK","1");
+			}else if (CHECK_CHIEF.equals("00400")){
+				setValue("CHECK","2");
 			}
 		} else if (state.equals("戈癟恨")) {
 			setVisible("DEVELOP", true);
@@ -69,11 +67,8 @@ public class flowc_state extends _hproc {
 			setNewView("FLOWCTEST");
 			setEditable("TEST_RESULT", true);
 			String TESTLINK = getValue("TESTLINK");
-			if (TESTLINK.length() != 0) {
-				setValue("TEST_LINK",
-						"<a  Target=\"_new\" href=\"" + TESTLINK.trim() + "\">"
-								+ TESTLINK.trim() + "</a>");
-			}
+			setValue("TEST_LINK", "<a href=\"" + TESTLINK.trim() + "\" target=\"_new\">"
+					+ TESTLINK.trim() + "</a>");
 			String TESTFILE = getValue("TESTFILE");
 			if (TESTFILE.length() != 0) {
 				setValue("TEST_FILE",
@@ -83,16 +78,46 @@ public class flowc_state extends _hproc {
 			String TESTRESULT = getValue("TESTRESULT");
 			setValue("TEST_RESULT", TESTRESULT);
 			download_field(tot_FF, download);
-		} else if (state.equals("戈癟场恨") || state.equals("絬")) {
+		}else if(state.equals("秨祇(恶糶╰参ゅン)")){
 			setNewView("FLOWCTEST");
 			String TESTLINK = getValue("TESTLINK");
-			setValue("TEST_LINK", "<a href=\"" + TESTLINK.trim() + "\">"
+			setValue("TEST_LINK", "<a href=\"" + TESTLINK.trim() + "\" target=\"_new\">"
 					+ TESTLINK.trim() + "</a>");
 			String TESTFILE = getValue("TESTFILE");
 			setValue("TEST_FILE", "<a href=\""
 					+ getDownloadURL(TESTFILE.trim()) + "\">ゅン更</a>");
 			String TESTRESULT = getValue("TESTRESULT");
 			setValue("TEST_RESULT", TESTRESULT);
+			
+			String field[] = {"UPLOADSYS","UP_SYS","UPLOAD","SYS_FILE","SYS_REMIND"};
+			for(int i=0;i<field.length;i++){
+				setVisible(field[i], true);
+			}
+			setEditable("UP_SYS", true);
+			String SYSFILE = getValue("SYSFILE");
+			if(SYSFILE.length()!=0){
+			setValue("SYS_FILE", "<a href=\""
+					+ getDownloadURL(SYSFILE.trim()) + "\">╰参ゅン更</a>");
+			}
+		} else if (state.equals("戈癟场恨") || state.equals("絬")) {
+			setNewView("FLOWCTEST");
+			String TESTLINK = getValue("TESTLINK");
+			setValue("TEST_LINK", "<a href=\"" + TESTLINK.trim() + "\" target=\"_new\">"
+					+ TESTLINK.trim() + "</a>");
+			String TESTFILE = getValue("TESTFILE");
+			setValue("TEST_FILE", "<a href=\""
+					+ getDownloadURL(TESTFILE.trim()) + "\">ゅン更</a>");
+			String TESTRESULT = getValue("TESTRESULT");
+			setValue("TEST_RESULT", TESTRESULT);
+			
+			String field[] = {"UPLOADSYS","UP_SYS","UPLOAD","SYS_FILE"};
+			for(int i=0;i<field.length;i++){
+				setVisible(field[i], true);
+			}
+			
+			String SYSFILE = getValue("SYSFILE");
+			setValue("SYS_FILE", "<a href=\""
+					+ getDownloadURL(SYSFILE.trim()) + "\">╰参ゅン更</a>");
 		}
 		return value;
 	}

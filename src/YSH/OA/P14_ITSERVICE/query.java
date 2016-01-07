@@ -25,7 +25,7 @@ public class query extends _hproc {
 		}
 		talk t = getTalk();
 		query(t, tablename, projectname,query, field, field_data,EMPID);
-		String ret[][] = user_info_YSH(t, EMPID);
+		String ret[][] = user_info_view(t, EMPID);
 		setValue("ENAME",ret[0][0]);
 		setValue("DEPT_NAME",ret[0][1]);
 		setValue("DEP_NAME",ret[0][2]);

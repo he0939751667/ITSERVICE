@@ -14,7 +14,7 @@ public class back extends _hproc {
 		// ¶Ç¤J­È value
 		String EMPID = getUser().trim();
 		talk t = getTalk();
-		String[][] ret = user_info_YSH(t, EMPID);
+		String[][] ret = user_info_view(t, EMPID);
 		setValue("EMPID",EMPID);
 		setValue("ENAME", ret[0][0].trim());
 		setValue("DEPT_NAME", ret[0][1].trim());

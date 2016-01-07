@@ -14,7 +14,7 @@ public class FORM_STATE extends hproc{
 		String EMPID = getUser().trim();
 		setValue("EMPID",EMPID);
 		talk t = getTalk();
-		String sql = "select hecname,DEP_NAME,DEP_CODE from user_info_YSH where EMPID='"+EMPID.trim()+"'";
+		String sql = "select hecname,DEP_NAME,DEP_CODE from user_info_view where EMPID='"+EMPID.trim()+"'";
 		String ret[][] = t.queryFromPool(sql);
 		setValue("ENAME",ret[0][0].trim());
 		setValue("DEPT_NAME",ret[0][1].trim());

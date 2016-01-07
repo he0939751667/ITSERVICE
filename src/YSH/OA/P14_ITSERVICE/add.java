@@ -2,6 +2,7 @@ package YSH.OA.P14_ITSERVICE;
 
 import java.io.*;
 import java.util.*;
+
 import setFuntion._hproc;
 import jcx.util.*;
 import jcx.html.*;
@@ -15,13 +16,17 @@ public class add extends _hproc{
 		String EMPID = getUser();
 		setValue("EMPID",EMPID.trim());
 		
-		String ret[][] = user_info_YSH(t, EMPID);
+		String ret[][] = user_info_view(t, EMPID);
 		setValue("ENAME",ret[0][0].trim());
 		setValue("DEPT_NAME",ret[0][1].trim());
 		setValue("DEPT",ret[0][2].trim());
 		
 		String today = getToday("YYYYmmdd");
 		setValue("APDATE",today);
+		String sql = "select dep_chief from user_info_view where EMPID='"
+				+ EMPID + "'";
+		String chief[][] = t.queryFromPool(sql);
+		setValue("CHECK_CHIEF", chief[0][0]);
      	return value;
 	}
 	public String getInformation(){

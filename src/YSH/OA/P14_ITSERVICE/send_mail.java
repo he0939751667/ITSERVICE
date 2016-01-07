@@ -13,6 +13,7 @@ import com.ysp.service.MailService;
 import YSH.OA.P14_ITSERVICE.Init;
 import jcx.util.*;
 import jcx.html.*;
+import jcx.jform.bNotify;
 import jcx.db.*;
 
 public class send_mail extends _bNotify {
@@ -38,7 +39,7 @@ public class send_mail extends _bNotify {
 		MailService mail = new MailService(bs);
 		
 		String HRADDR = (String) get("SYSTEM.HRADDR");
-		if (state.equals("待處理") || state.equals("部門主管") || state.equals("總經理") || state.equals("資訊主管") || state.equals("開發人員")) {
+		if (state.equals("待處理") || state.equals("部門主管") || state.equals("總經理") || state.equals("董事長") || state.equals("資訊主管") || state.equals("開發人員")) {
 			String title = "主旨：(" + field_Init[1] + ")" + name + "資訊處理服務審核表( " + PNO
 					+ " )，請進入系統簽核 " + HRADDR.trim();
 			String content = "";
@@ -56,7 +57,7 @@ public class send_mail extends _bNotify {
 			// content += "寄給："+vid+"\r\n";
 			sendmail(V2, mail, title, content);
 			return;
-		} else if (state.equals("測試人員") || state.equals("資訊部主管")) {
+		} else if (state.equals("測試人員") || state.equals("資訊部主管") || state.equals("開發人員(填寫系統文件)")) {
 			String TEST_RESULT = getValue("TEST_RESULT");
 			String title = "主旨：(" + field_Init[1] + ")" + name + "資訊處理服務審核表( " + PNO
 					+ " )，請進入系統簽核 " + HRADDR.trim();
